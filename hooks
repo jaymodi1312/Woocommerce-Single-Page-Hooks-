@@ -1,11 +1,11 @@
-// To change add to cart text on product archives(Collection) page
+// To change add to cart text on product archives(Collection) page //
 
 add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_custom_product_add_to_cart_text' );  
 function woocommerce_custom_product_add_to_cart_text() {
     return __( 'Buy Now', 'woocommerce' );
 }
 
-// Varible Product Show only low price on single page
+// Varible Product Show only low price on single page //
 
 add_filter( 'woocommerce_variable_sale_price_html', 'get_min_variation_price_format', 10, 2 );
 add_filter( 'woocommerce_variable_price_html', 'get_min_variation_price_format', 10, 2 );
@@ -16,7 +16,7 @@ function get_min_variation_price_format( $price, $product ) {
 }
 
 
-// Change Attribute Drop Down name Choose an Option value to custom text
+// Change Attribute Drop Down name Choose an Option value to custom text //
 
 add_filter( 'woocommerce_dropdown_variation_attribute_options_args', 'dropdown_variation_attribute_options', 10, 1 );
 function dropdown_variation_attribute_options( $args ){
@@ -33,7 +33,7 @@ function dropdown_variation_attribute_options( $args ){
 }
 
 
-// Change Single Product Page Tabs Name and position 
+// Change Single Product Page Tabs Name and position //
 
 add_filter( 'woocommerce_product_tabs', 'reordered_tabs', 98 );
 function reordered_tabs( $tabs ) {
