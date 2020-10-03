@@ -31,3 +31,18 @@ function dropdown_variation_attribute_options( $args ){
 
     return $args;
 }
+
+
+// Change Single Product Page Tabs Name and position 
+
+add_filter( 'woocommerce_product_tabs', 'reordered_tabs', 98 );
+function reordered_tabs( $tabs ) {
+	$tabs['descriptions']['priority'] = 10; 
+    $tabs['description']['priority'] = 15; 
+	$tabs['description']['title'] = __( 'Specifications' );	
+	$tabs['descriptions']['title'] = __( 'Key Features' );
+    return $tabs;
+}
+
+
+
