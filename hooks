@@ -45,4 +45,10 @@ function reordered_tabs( $tabs ) {
 }
 
 
+// Single page add custom text after Price (NEW LINE)
+
+add_action( 'woocommerce_single_product_summary', 'custom_text', 15 );
+function custom_text() {
+  print '<p class="custom_text">My text here</p>';  
+}
 
