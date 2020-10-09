@@ -4,6 +4,8 @@ add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_custom_product_
 function woocommerce_custom_product_add_to_cart_text() {
     return __( 'Buy Now', 'woocommerce' );
 }
+=====================================================================================================================================================================
+
 
 // Varible Product Show only low price on single page //
 
@@ -15,6 +17,8 @@ function get_min_variation_price_format( $price, $product ) {
     return wc_price($min_variation_price);
 }
 
+
+=====================================================================================================================================================================
 
 // Change Attribute Drop Down name Choose an Option value to custom text //
 
@@ -32,6 +36,8 @@ function dropdown_variation_attribute_options( $args ){
     return $args;
 }
 
+=====================================================================================================================================================================
+
 
 // Change Single Product Page Tabs Name and position //
 
@@ -44,6 +50,7 @@ function reordered_tabs( $tabs ) {
     return $tabs;
 }
 
+=====================================================================================================================================================================
 
 // Single page add custom text after Price (NEW LINE)
 
@@ -52,3 +59,23 @@ function custom_text() {
   print '<p class="custom_text">My text here</p>';  
 }
 
+=====================================================================================================================================================================
+
+//Add in text after price to certain products
+
+function themeprefix_custom_price_message( $price ) { 
+	
+	global $post;
+		
+	$product_id = $post->ID;
+	$my_product_array = array( 799,796,792 );//add in product IDs
+	if ( in_array( $product_id, $my_product_array )) {
+		$textafter = '( Upfront Paid in Full Price )'; //add your text
+		return $price . '<br /><span class="price-description">' . $textafter . '</span>';
+	}
+	 
+	else { 
+		return $price; 
+	} 
+}
+add_filter( 'woocommerce_get_price_html', 'themeprefix_custom_price_message' );
