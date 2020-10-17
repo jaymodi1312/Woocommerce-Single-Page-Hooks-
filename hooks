@@ -4,6 +4,14 @@ add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_custom_product_
 function woocommerce_custom_product_add_to_cart_text() {
     return __( 'Buy Now', 'woocommerce' );
 }
+
+// Single page add to cart text change
+add_filter('woocommerce_product_single_add_to_cart_text', 'woo_custom_cart_button_text');
+ 
+function woo_custom_cart_button_text() {
+return __('ADD TO BAG', 'woocommerce');
+}
+
 =====================================================================================================================================================================
 
 
