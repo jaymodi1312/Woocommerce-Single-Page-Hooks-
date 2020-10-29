@@ -109,3 +109,41 @@ function themeprefix_custom_price_message( $price ) {
 	} 
 }
 add_filter( 'woocommerce_get_price_html', 'themeprefix_custom_price_message' );
+
+
+
+
+============================================================================================================================================================
+// Change add to cart text For specific product IDs 
+
+
+add_filter( 'woocommerce_product_add_to_cart_text', 'custom_loop_add_to_cart_button', 20, 2 ); 
+function custom_loop_add_to_cart_button( $button_text, $product ) {
+    
+    $specific_ids = array(547, 481);
+
+    if( in_array($product->get_id(), $specific_ids) ) {
+        $button_text = __("Enter Now", "woocommerce");
+    } else {
+        $button_text = __('Read More', 'woocommerce');
+    }
+    return $button_text;
+}
+
+============================================================================================================================================================
+
+// Hidding Price For Specific product 
+
+add_filter( 'woocommerce_get_price_html', function( $price, $product ) {
+
+	$hide_for_products = array( 478, 485 );
+	if ( in_array( $product->get_id(), $hide_for_products ) ) {
+		return '';
+	}
+
+	return $price; // Return original price
+}, 10, 2 );
+
+add_filter( 'woocommerce_cart_item_price', '__return_false' );
+add_filter( 'woocommerce_cart_item_subtotal', '__return_false' );
+
